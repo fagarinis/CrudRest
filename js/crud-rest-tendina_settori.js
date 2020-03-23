@@ -16,3 +16,19 @@ function buildTendinaSettoriFromJson(resultJson){
 	});
 	tendina.append(settori);
 }
+
+function getSettoreSelected(){
+	return $('#codiceSettoreInputId').find(":selected");
+}
+
+function getCodiceSettoreSelected(){
+	return getSettoreSelected.val();
+}
+
+function getDescrizioneSettoreSelected(){
+	return getSettoreSelected.text();
+}
+
+function selectSettoreByCodice(codiceSettore){
+	$("#codiceSettoreInputId option[value='"+codiceSettore+"']").prop('selected', true);
+}

@@ -1,16 +1,5 @@
 const HOST = 'http://212.237.32.76:3000';
 
-function doCall(typeRequest, urlPath, parametri, callbackOnSuccess) {
-	$.ajax({
-		url: urlPath,
-		type: typeRequest,
-		data: JSON.stringify(parametri),
-		contentType: "application/json",
-		dataType: "json",
-		success: callbackOnSuccess
-	});
-}
-
 function doCall(typeRequest, urlPath, parametri, callbackOnSuccess, callbackOnError) {
 	$.ajax({
 		url: urlPath,
@@ -42,7 +31,12 @@ function buildDettaglioFromJson(json){
 
 function executeDettaglio(){
 	var id = $("#idInput").val();
-	doCall('GET', HOST+'/risorsa/'+id, {}, function(resultJson){
+	
+	if(isBlank(id)){
+		return;
+	}
+	
+	doCall('GET', HOST+'/risorsa/'+ id, undefined, function(resultJson){
 		buildDettaglioFromJson(resultJson);
 	});
 }

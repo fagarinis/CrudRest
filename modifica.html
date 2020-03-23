@@ -1,7 +1,8 @@
 <html>
 <head>
+
 <meta charset="ISO-8859-1">
-<title>Inserimento</title>
+<title>Modifica</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -9,14 +10,28 @@
 <body>
 
 	<div class="container">
-
-	
-
 		<div class="page-header">
-			<h3>Pagina di Inserimento Risorsa</h3>
+			<h3>Pagina di Modifica Risorsa</h3>
 		</div>
 
-		<form class="form-horizontal" onsubmit="executeInsert()" method="post">
+		<form class="form-inline" onsubmit="prepareUpdate()" method="get">
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="inputId">Id:</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" id="inputId" name="inputId">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary btn-md">Modifica</button>
+				</div>
+			</div>
+		</form>
+		
+		
+		<form class="form-horizontal" onsubmit="executeUpdate()" method="post">
 			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="nomeInputId">Nome:</label>
@@ -44,6 +59,7 @@
 				<div class="col-sm-4">
 					<!-- menu a tendina scelta codice settore -->
 					<select class="form-control" name="codiceSettoreInput" id="codiceSettoreInputId">
+						<option class="form-control" value = ''></option>
 					</select>
 					
 				</div>
@@ -58,7 +74,7 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary btn-md">Conferma Inserimento</button>
+					<button type="submit" class="btn btn-primary btn-md">Conferma Modifiche</button>
 				</div>
 			</div>
 		</form>
@@ -74,7 +90,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
 <script src="js/crud-rest-ajax.js"></script>
-<script src="js/crud-rest-insert.js"></script>
+<script src="js/crud-rest-update.js"></script>
 <script src="js/crud-rest-tendina_settori.js"></script>
 
 <script type="text/javascript">
