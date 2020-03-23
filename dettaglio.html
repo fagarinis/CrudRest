@@ -1,0 +1,73 @@
+
+<html>
+<head>
+
+<meta charset="ISO-8859-1">
+
+<title>Dettaglio</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h3>Pagina di Dettaglio</h3>
+		</div>
+		<!--<form class="form-inline" onsubmit="executeDettaglioMock()" method="get">-->
+		<form class="form-inline" onsubmit="executeDettaglio()" method="get">
+			<div class="form-group">
+					<label class="control-label " for="idInput">Id:</label>				
+					<input class="form-control col-sm-7" type="text" id="idInput" name="idInput">
+					<button type="submit" class="btn btn-primary btn-md">Dettaglio</button>
+				
+			</div>
+		</form>
+		
+		<div class="container-fluid">
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Id</dt>
+				<dd class="col-sm-9" id="id"></dd>
+			</dl>
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Nome</dt>
+				<dd class="col-sm-9" id="nomeId"></dd>
+			</dl>
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Cognome</dt>
+				<dd class="col-sm-9" id="cognomeId"></dd>
+			</dl>
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Data di nascita</dt>
+				<dd class="col-sm-9" id="dataNascitaId"></dd>
+			</dl>
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Settore</dt>
+				<dd class="col-sm-9" id="settoreId"></dd>
+			</dl>
+			<dl class="row">
+				<dt class="col-sm-3 text-right">Stipendio RAL</dt>
+				<dd class="col-sm-9" id="stipendioId"></dd>
+			</dl>
+			
+		</div>
+	
+	
+	</div>
+	
+</body>
+</html>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+<script src="js/crud-rest-ajax.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+        // Disable form submit:
+        $('form').submit( function(e){
+            e.preventDefault();
+        });
+});</script>
