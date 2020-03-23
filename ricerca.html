@@ -1,78 +1,74 @@
-<%@ page import="it.prova.gestionemunicipiospringjpa.model.Municipio" %>
-<%@ page import="java.util.List" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
 <html>
 <head>
 <meta name="author" content="MohamedMohamedali">
 <meta charset="ISO-8859-1">
-<title>Ricerca Abitante</title>
+<title>Ricerca</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-	<% List<Municipio> municipi =(List<Municipio>) request.getAttribute("listaMunicipiAttributeName");
 
-%>
 	<div class="container">
 
-		<%@ include file="../header.jsp"%>
+	
 
 		<div class="page-header">
-			<h3>Pagina di Ricerca Abitante</h3>
+			<h3>Pagina di Ricerca</h3>
 		</div>
 
-		<form class="form-horizontal" action="ExecuteSearchAbitanteServlet"
-			method="post">
+		<form class="form-horizontal" onsubmit="executeSearch()" method="get">
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="nomeInputId">Nome:</label>
 				<div class="col-sm-4">
-					<input class="form-control" type="text" id="nomeInputId"
-						name="nomeInput">
+					<input class="form-control" type="text" id="nomeInputId" name="nomeInput">
 				</div>
 			</div>
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="cognomeInputId">Cognome:</label>
 				<div class="col-sm-4">
-					<input class="form-control" type="text" id="cognomeInputId"
-						name="cognomeInput">
+					<input class="form-control" type="text" id="cognomeInputId" name="cognomeInput">
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="indirizzoInputId">Indirizzo:</label>
+				<label class="control-label col-sm-2" for="codiceSettoreInput">Settore:</label>
 				<div class="col-sm-4">
-					<input class="form-control" type="text" id="indirizzoInputId"
-						name="indirizzoInput">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="municipioInputId">Municipio:</label>
-				<div class="col-sm-4">
-
-					<!-- menu a tendina scelta municipio -->
-					<select class="form-control" name="idMunicipio">
-						<option class="form-control" value="null">Qualsiasi</option>
-						<%for(Municipio m:municipi){ %>
-						<option class="form-control" value="<%=m.getId()%>"><%=m.getDescrizione() %></option>
-						<%} %>
+					<!-- menu a tendina scelta codice settore -->
+					<select class="form-control" name="codiceSettoreInput" id="codiceSettoreInputId">
+						<option class="form-control" value = ''>Qualsiasi</option>
 					</select>
-
-
+					
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary btn-md">Effettua
-						Ricerca</button>
-
-					<a href="PrepareInsertAbitanteServlet"
-						class="btn btn-primary btn-md">Inserisci Nuovo Elemento</a>
+					<button type="submit" class="btn btn-primary btn-md">Effettua Ricerca</button>
 				</div>
 			</div>
 		</form>
-		<%@ include file="../footer.jsp"%>
+
+
 	</div>
 	<!-- /.container -->
 	
 </body>
 </html>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+<script src="js/crud-rest-ajax.js"></script>
+<script src="js/crud-rest-search.js"></script>
+<script src="js/crud-rest-tendina_settori.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+        // Disable form submit:
+        $('form').submit( function(e){
+            e.preventDefault();
+        });
+});</script>
