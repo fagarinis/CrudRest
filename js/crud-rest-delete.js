@@ -6,8 +6,8 @@ function executeDelete(){
 	}
 	
 	 doCall('DELETE', HOST +'/risorsa/'+ id, undefined, function(resultJson){
-		console.log("cancellazione avvenuta con successo");
+		 $("#idParagrafo").html("cancellazione avvenuta con successo");
 	}, function(error){
-		console.log("cancellazione fallita");
+		$("#idParagrafo").html("cancellazione fallita");
 	}); 
 }

@@ -30,7 +30,6 @@ function buildResultTable(resultJson){
 	
 	resultTable.append(buildTableHead());
 	
-	console.log(resultTable);
 	
 	for (var i = 0; i < resultJson.length; i++) {
 		resultTable.append(buildTableRow(resultJson[i]));
@@ -40,24 +39,35 @@ function buildResultTable(resultJson){
 }
 
 function buildTableHead(){
-	var tableHead = "<th>";
-	tableHead += " <td>Nome</td>";
+	var tableHead = "<thead><tr>";
+	tableHead += " <th>Id</th>";
+	tableHead += " <th>Nome</th>";
+	tableHead += " <th>Cognome</th>";
+	tableHead += " <th>Data di nascita</th>";
+	tableHead += " <th>Settore</th>";
+	tableHead += " <th>Stipendio</th>";
+	tableHead += "</tr></thead>";
 	
-	tableHead += "</th>";
 	return tableHead;
 	
 }
 
 function buildTableRow(jsonRisorsa){
-	id = jsonRisorsa.id;
+	id = jsonRisorsa._id;
 	nome = jsonRisorsa.nome;
 	cognome = jsonRisorsa.cognome;
-	//settore = jsonRisorsa["album"]["artista"].nome + " " + jsonRisorsa["album"]["artista"].cognome;
+	dataNascita = jsonRisorsa.dataNascita;
+	settore = jsonRisorsa.settore.descrizione + " " + jsonRisorsa.settore.codice;
+	stipendioRAL = jsonRisorsa.stipendioRAL;
 
 	var tableRow ="<tr>";
 
+	tableRow += "<td>"+id+"</td>";
 	tableRow += "<td>"+nome+"</td>";
 	tableRow += "<td>"+cognome+"</td>";
+	tableRow += "<td>"+dataNascita+"</td>";
+	tableRow += "<td>"+settore+"</td>";
+	tableRow += "<td>"+stipendioRAL+"</td>";
 	
 	tableRow += "</tr>";
 	
@@ -67,5 +77,5 @@ function buildTableRow(jsonRisorsa){
 }
 
 function clearResultTable(){
-	$("#songsTableId").empty();
+	$("#resultTableId").empty();
 }

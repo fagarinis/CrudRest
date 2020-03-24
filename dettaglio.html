@@ -10,19 +10,52 @@
 
 </head>
 <body>
+	<!-- Static navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;">
+		<a class="navbar-brand" href="">CRUD Rest</a>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="ricerca.html">Ricerca
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="inserisci.html">Inserisci
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="dettaglio.html">Dettaglio
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="modifica.html">Modifica
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="cancella.html">Elimina
+						<span class="sr-only">(current)</span>
+				</a></li>
+			
+		</div>
+	</nav>
+
 	<div class="container">
 		<div class="page-header">
 			<h3>Pagina di Dettaglio</h3>
 		</div>
-		<!--<form class="form-inline" onsubmit="executeDettaglioMock()" method="get">-->
+
 		<form class="form-inline" onsubmit="executeDettaglio()" method="get">
+			
 			<div class="form-group">
-					<label class="control-label " for="idInput">Id:</label>				
-					<input class="form-control col-sm-7" type="text" id="idInput" name="idInput">
+				<label class="control-label col-sm-2" for="idInput">Id:</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" id="idInput" name="idInput">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary btn-md">Dettaglio</button>
+				</div>
 				
 			</div>
 		</form>
+		
 		
 		<div class="container-fluid">
 			<dl class="row">
@@ -62,6 +95,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
 <script src="js/crud-rest-ajax.js"></script>
+<script src="js/crud-rest-dettaglio.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){

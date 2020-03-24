@@ -18,31 +18,30 @@ function executeUpdate(){
 		"stipendioRAL": stipendio
 		};
 	
-	console.log(param);
-	
 	 doCall('PUT', HOST +'/risorsa', param, function(resultJson){
-		console.log("modifica avvenuta con successo");
+		  $("#idParagrafo").html("modifica avvenuta con successo");
 	}, function(error){
-		console.log("modifica fallita");
+		 $("#idParagrafo").html("modifica fallita");
 	}); 
 }
 
 function prepareUpdate(){
+	$("#idParagrafo").html("");
 	var id = $("#inputId").val();
 	if(isBlank(id)){
 		return;
 	}
 	
-	doCall('GET', HOST +'/risorsa/'+id, {}, function(resultJson){		
-		populateUpdateInput(resultJson);
-	},function(error){
-		console.log("errore nel prepareUpdate: "+error);
+	doCall('GET', HOST +'/risorsa/'+id, undefined, populateUpdateInput ,function(error){
+		$("#idParagrafoPrepareUpdate").html("Id errato o errore nella preparazione della modifica");
 	}
 	);
 	
 }
 
 function populateUpdateInput(resultJson){
+	$("#idParagrafoPrepareUpdate").html("");
+	
 	$("#nomeInputId").val(resultJson["nome"]);
 	$("#cognomeInputId").val(resultJson["cognome"]);
 	$("#dataNascitaInputId").val(resultJson["dataNascita"]);
