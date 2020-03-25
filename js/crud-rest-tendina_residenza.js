@@ -108,6 +108,10 @@ function buildTendinaComuniFromJson(resultJson){
 
 
 function selectResidenza(residenzaJson){
+	if(residenzaJson == null){
+		selectRegione(null);
+		return null;
+	}
 	var codiceRegione = residenzaJson["regione"]["codice"];
 	var codiceProvincia = residenzaJson["provincia"]["codice"];
 	var codiceComune = residenzaJson["comune"]["codice"];
@@ -118,6 +122,11 @@ function selectResidenza(residenzaJson){
 }
 
 function selectRegione(codiceRegione){
+	if(codiceRegione == null){
+		$("#regioneInputId option[value='']").prop('selected', true);
+		$("#provinciaInputId").empty();
+		$("#comuneInputId").empty();
+	}
 	$("#regioneInputId option[data-codice='"+codiceRegione+"']").prop('selected', true);
 }
 

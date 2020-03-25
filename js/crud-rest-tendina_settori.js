@@ -7,6 +7,10 @@ function populateTendinaSettori(){
 }
 
 function buildTendinaSettoriFromJson(resultJson){
+	if(resultJson == null){
+		return null;
+	}
+	
 	var tendina = $("#codiceSettoreInputId");
 	var settori = '';
 	$.each(resultJson, function(i, item){ //i = indice dell'oggetto nel json (da 0...n) , item = oggetto
