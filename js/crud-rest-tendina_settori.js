@@ -3,9 +3,7 @@ $(document).ready(function(){
 });
 
 function populateTendinaSettori(){
-	doCall('GET', HOST +'/settore/', {}, function(resultJson){
-		buildTendinaSettoriFromJson(resultJson);
-	});
+	doCall('GET', HOST +'/settore/', undefined, buildTendinaSettoriFromJson);
 }
 
 function buildTendinaSettoriFromJson(resultJson){

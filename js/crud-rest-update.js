@@ -9,13 +9,24 @@ function executeUpdate(){
 	var settoreSelected = $('#codiceSettoreInputId').find(":selected");
 	var settore = {"codice" : settoreSelected.val() , "descrizione": settoreSelected.text()};
 	
+	var regioneSelected = $('#regioneInputId').find(":selected");
+	var provinciaSelected = $('#provinciaInputId').find(":selected");
+	var comuneSelected = $('#comuneInputId').find(":selected");
+	
+	var residenza = {
+		"regione": {"codice": regioneSelected.data("codice") ,"descrizione": regioneSelected.text()}, 
+		"provincia": {"codice": provinciaSelected.data("codice") ,"descrizione": provinciaSelected.text()}, 
+		"comune":{"codice": comuneSelected.data("codice") ,"descrizione": comuneSelected.text()}
+	}
+	
 	var param = {
 		"_id" : id,
 		"nome": nome,
 		"cognome": cognome,
 		"dataNascita": dataNascita,
 		"settore": settore,
-		"stipendioRAL": stipendio
+		"stipendioRAL": stipendio,
+		"residenza": residenza
 		};
 	
 	 doCall('PUT', HOST +'/risorsa', param, function(resultJson){
@@ -47,4 +58,5 @@ function populateUpdateInput(resultJson){
 	$("#dataNascitaInputId").val(resultJson["dataNascita"]);
 	$("#stipendioInputId").val(resultJson["stipendioRAL"]);
 	selectSettoreByCodice(resultJson["settore"]["codice"]);
+	selectResidenza(resultJson["residenza"]);
 }

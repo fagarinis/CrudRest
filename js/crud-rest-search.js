@@ -23,8 +23,7 @@ function executeSearch(){
 }
 
 function buildResultTable(resultJson){
-	// DA FINIRE ...
-	console.table(resultJson); //TEST
+	//console.table(resultJson); //TEST
 	clearResultTable();
 	var resultTable = $("#resultTableId");
 	
@@ -57,7 +56,9 @@ function buildTableRow(jsonRisorsa){
 	nome = jsonRisorsa.nome;
 	cognome = jsonRisorsa.cognome;
 	dataNascita = jsonRisorsa.dataNascita;
-	settore = jsonRisorsa.settore.descrizione + " " + jsonRisorsa.settore.codice;
+	if(jsonRisorsa.settore != null){
+		settore = jsonRisorsa.settore.descrizione + " " + jsonRisorsa.settore.codice;
+	}
 	stipendioRAL = jsonRisorsa.stipendioRAL;
 
 	var tableRow ="<tr>";
