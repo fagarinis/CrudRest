@@ -27,7 +27,7 @@ function executeUpdate(){
 		  $("#idParagrafo").html("modifica avvenuta con successo");
 	}, function(error){
 		 $("#idParagrafo").html("modifica fallita");
-	}); 
+	}, true); 
 }
 
 function prepareUpdate(){
@@ -44,7 +44,7 @@ function prepareUpdate(){
 		toggleUpdateInput(true);
 	} ,function(error){
 		$("#idParagrafoPrepareUpdate").html("Id errato o errore nella preparazione della modifica");
-	}
+	}, true
 	);
 	
 }

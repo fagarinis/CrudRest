@@ -9,5 +9,5 @@ function executeDelete(){
 		 $("#idParagrafo").html("cancellazione avvenuta con successo");
 	}, function(error){
 		$("#idParagrafo").html("cancellazione fallita");
-	}); 
+	}, true); 
 }

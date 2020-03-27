@@ -19,7 +19,7 @@ function executeSearch(){
 		path += '&codiceSettore='+codiceSettore;
 	}
 	
-	doCall('GET', path, undefined, buildResultTable);
+	doCall('GET', path, undefined, buildResultTable, undefined, true);
 }
 
 function buildResultTable(resultJson){
@@ -38,13 +38,13 @@ function buildResultTable(resultJson){
 }
 
 function buildTableHead(){
+	var nomiAttributi = ["Id","Nome","Cognome","Data di Nascita", "Settore", "Stipendio", "Residenza"];
 	var tableHead = "<thead><tr>";
-	tableHead += " <th>Id</th>";
-	tableHead += " <th>Nome</th>";
-	tableHead += " <th>Cognome</th>";
-	tableHead += " <th>Data di nascita</th>";
-	tableHead += " <th>Settore</th>";
-	tableHead += " <th>Stipendio</th>";
+	
+	for(let i = 0; i < nomiAttributi.length; i++){
+		tableHead += " <th>"+nomiAttributi[i]+"</th>";
+	}
+	
 	tableHead += "</tr></thead>";
 	
 	return tableHead;
@@ -56,10 +56,14 @@ function buildTableRow(jsonRisorsa){
 	nome = jsonRisorsa.nome;
 	cognome = jsonRisorsa.cognome;
 	dataNascita = jsonRisorsa.dataNascita;
-	if(jsonRisorsa.settore != null){
+	if(jsonRisorsa.settore){
 		settore = jsonRisorsa.settore.descrizione + " " + jsonRisorsa.settore.codice;
 	}
 	stipendioRAL = jsonRisorsa.stipendioRAL;
+	
+	if(jsonRisorsa.residenza){
+		var {regione, provincia, comune} = {regione : jsonRisorsa.residenza.regione.descrizione, provincia: jsonRisorsa.residenza.provincia.codice , comune: jsonRisorsa.residenza.comune.descrizione }
+	}
 
 	var tableRow ="<tr>";
 
@@ -69,6 +73,7 @@ function buildTableRow(jsonRisorsa){
 	tableRow += "<td>"+dataNascita+"</td>";
 	tableRow += "<td>"+settore+"</td>";
 	tableRow += "<td>"+stipendioRAL+"</td>";
+	tableRow += "<td>"+comune+", "+provincia+", "+ regione+"</td>";
 	
 	tableRow += "</tr>";
 	

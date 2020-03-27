@@ -4,10 +4,10 @@ function executeInsert(){
 	var param = buildJsonFromInput();
 	
 	 doCall('POST', HOST +'/risorsa', param, function(resultJson){
-		console.log("inserimento avvenuto con successo");
+		 $("#idParagrafoNotifica").html("Inserimento avvenuto con successo");
 	}, function(error){
-		console.log("inserimento fallito");
-	}); 
+		$("#idParagrafoNotifica").html("inserimento fallito");
+	}, true); 
 }
 
 function buildJsonFromInput(){
